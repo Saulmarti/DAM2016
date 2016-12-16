@@ -1,3 +1,4 @@
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,29 +9,22 @@ import javax.swing.border.EmptyBorder;
 
 import JUEGO.Jugador;
 
+import javax.swing.JLabel;
 
-
-public class VentanaPrincipal extends JFrame {
+public class Juego extends JFrame {
 
 	private JPanel contentPane;
+	private Jugador j;
+	private JLabel lblNewLabel;
 
-	
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
-	
-//Generar jugador
-	
-	Jugador player=new Jugador();
-	player.setNombre("Saul");
-	player.setApellidos("Marti Vila");
-	player.setEdad(18);
-	player.setId(68769);
-	System.out.println(player.toString());
-	
-	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
+					Juego frame = new Juego();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,13 +36,21 @@ public class VentanaPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPrincipal() {
+	public Juego() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+	 lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(5, 5, 424, 14);
+		contentPane.add(lblNewLabel);
+	}
+	public void setJugador(Jugador j){
+		this.j=j;
+		lblNewLabel.setText("Hola "+j.getNombre()+" ¡ Empieza el juego !");
 	}
 
 }
